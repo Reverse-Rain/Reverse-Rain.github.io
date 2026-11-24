@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReverseRain · Independent game studio</title>
+<meta name="description" content="ReverseRain is an independent game studio. Our first game is Demolition Crew.">
+<meta name="theme-color" content="#15181d">
+<link rel="icon" type="image/png" href="demolition-crew/favicon.png">
+<style>
+:root{--bg:#f6f4ef;--paper:#fff;--ink:#1b1f24;--muted:#5d6570;--line:#e4e0d6;--accent:#ffb400;--link:#9a5b00;--chip:#fff6df;--head:#15181d;--head-ink:#f3f1ec;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--paper:#181b20;--ink:#e8e6e1;--muted:#a1a8b2;--line:#2a2f37;--link:#ffc53d;--chip:#262219;--head:#0b0d10;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-underline-offset:2px}
+.top{position:sticky;top:0;z-index:5;background:var(--head);color:var(--head-ink);border-bottom:3px solid var(--accent)}
+.top-in{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;margin-right:auto}
+.brand img{width:40px;height:40px;border-radius:10px;display:block}
+.brand b{display:block;font-size:17px;letter-spacing:.2px;line-height:1.2}
+.brand span{display:block;font-size:12.5px;color:#aab1ba;line-height:1.2}
+.nav{display:flex;gap:6px}
+.nav a{color:#d8dbe0;text-decoration:none;font-size:14px;font-weight:600;padding:7px 12px;border-radius:999px}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.on{background:var(--accent);color:#1b1500}
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
+.toc{position:sticky;top:96px;font-size:14px}
+.toc p{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.toc a{display:block;padding:5px 0 5px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.35}
+.toc a:hover{color:var(--ink);border-left-color:var(--accent)}
+.toc details{display:none}
+.doc{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:40px 48px;min-width:0}
+.doc h1{font-size:34px;line-height:1.15;margin:0 0 6px;letter-spacing:-.4px}
+.legal-meta{margin:0 0 22px;color:var(--muted);font-size:14px}
+.doc h2{font-size:20px;line-height:1.3;margin:36px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+.doc h3{font-size:16px;margin:20px 0 4px}
+.doc p,.doc li{margin:8px 0}
+.doc ul{padding-left:22px}
+.doc li::marker{color:var(--accent)}
+.legal-summary{background:var(--chip);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 20px;margin:24px 0 8px}
+.legal-summary-title{margin:0 0 4px!important;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.legal-summary ul{margin:0}
+.legal-contact{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.foot{border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+.foot-in{max-width:1080px;margin:0 auto;padding:22px 20px 32px;display:flex;gap:10px 24px;flex-wrap:wrap;justify-content:space-between}
+.foot a{color:var(--muted)}
+.foot nav{display:flex;gap:18px;flex-wrap:wrap}
+.hero{max-width:720px;margin:0 auto;padding:56px 20px 24px;text-align:center}
+.hero img{width:112px;height:112px;border-radius:26px;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.hero h1{font-size:40px;letter-spacing:-.6px;margin:20px 0 6px}
+.hero .tag{font-size:18px;color:var(--muted);margin:0 0 20px}
+.badge{display:inline-block;background:var(--head);color:var(--head-ink);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px}
+.cards{max-width:720px;margin:0 auto;padding:16px 20px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px;color:var(--ink);text-decoration:none}
+.card:hover{border-color:var(--accent)}
+.card b{display:block;font-size:16px}
+.card span{color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:16px;padding-top:20px}
+  .toc{position:static}
+  .toc>p,.toc>ol{display:none}
+  .toc details{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+  .toc details summary{display:block;cursor:pointer;font-weight:700}
+  .toc details ol{margin-top:10px}
+  .doc{padding:26px 20px;border-radius:14px}
+  .doc h1{font-size:28px}
+}
+@media (max-width:520px){.brand span{display:none}.nav a{padding:6px 10px;font-size:13px}.hero h1{font-size:32px}}
+@media print{.top,.toc,.foot{display:none}.wrap{display:block;padding:0}.doc{border:0;padding:0}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="./"><img src="demolition-crew/icon.png" alt="" width="40" height="40"><div><b>ReverseRain</b><span>Game studio</span></div></a>
+  <nav class="nav" aria-label="Legal"><a href="demolition-crew/privacy-policy.html">Privacy</a><a href="demolition-crew/terms.html">Terms</a></nav>
+</div></header>
+<section class="hero">
+  <h1>ReverseRain</h1>
+  <p class="tag">An independent game studio from India, making mobile games that are easy to pick up and satisfying to play.</p>
+</section>
+<section class="cards" style="grid-template-columns:1fr">
+  <a class="card game" href="demolition-crew/"><img src="demolition-crew/icon.png" alt="" width="72" height="72"><div><b>Demolition Crew</b><span>Smash buildings block by block, sell the scrap and upgrade from a sledgehammer to a full implosion crew. Coming soon to Google Play.</span></div></a>
+  <a class="card" href="mailto:support.reverserain@gmail.com"><b>Contact</b><span>support.reverserain@gmail.com</span></a>
+</section>
+<style>.card.game{display:flex;gap:18px;align-items:center}.card.game img{width:72px;height:72px;border-radius:16px;flex:none}</style>
+<footer class="foot"><div class="foot-in">
+  <div>© 2026 ReverseRain. All rights reserved.</div>
+  <nav><a href="demolition-crew/privacy-policy.html">Privacy Policy</a><a href="demolition-crew/terms.html">Terms of Use</a><a href="mailto:support.reverserain@gmail.com">support.reverserain@gmail.com</a></nav>
+</div></footer>
+</body>
+</html>
